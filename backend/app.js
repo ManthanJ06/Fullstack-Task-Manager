@@ -2,10 +2,10 @@ import express from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { authMiddleware } from "./middleware/auth.js";
-import { User } from "./user.js";
+import { User } from "./models/user.js";
 import mongoose from "mongoose";
 import cors from "cors";
-import { Task } from "./task.js";
+import { Task } from "./models/task.js";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import crypto from "crypto";
@@ -35,13 +35,17 @@ const transporter = nodemailer.createTransport({
 });
 
 mongoose
-  .connect("mongodb://localhost:27017/auth-app")
+  .connect(process.env.MONGO_URI || "mongodb://mongo:27017/auth-app")
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
 
 /* ================= TASK ROUTES ================= */
 
 // CREATE TASK
+app.get("/", (req, res) => {  
+  res.json({ message: "Welcome to the API" });
+});
+
 app.post("/tasks", authMiddleware, async (req, res) => {
   try {
     const task = await Task.create({
