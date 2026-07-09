@@ -1,6 +1,9 @@
-# Full-Stack Task Manager
-A full-stack task management application that allows users to securely manage their tasks with authentication and protected routes. Built using the MERN stack, it supports user login, task creation, and efficient data handling.
-One user can see only his tasks.
+# Full-Stack Task Manager## 📌 Project Summary
+
+A full-stack Task Management application built with the MERN stack that allows users to securely create, update, and manage their personal tasks. The application implements JWT authentication and protected routes, ensuring each user can access only their own data.
+
+The project is containerized using Docker, with separate containers for the frontend, backend, and MongoDB database managed through Docker Compose, making development, deployment, and environment setup simple and consistent.
+
 
 ## Features
 - User authentication using JWT  
@@ -14,7 +17,7 @@ One user can see only his tasks.
 Frontend: React.js, Tailwind CSS  
 Backend: Node.js, Express.js  
 Database: MongoDB  
-Authentication: JWT, bcrypt  
+Authentication: JWT, bcrypt, hashing  
 
 ## How It Works
 - Users register and login using JWT-based authentication  
